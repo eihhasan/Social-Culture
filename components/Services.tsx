@@ -64,11 +64,11 @@ const Services: React.FC = () => {
       {/* Background accents */}
       <div className="absolute top-0 right-0 -translate-y-12 translate-x-12 w-96 h-96 bg-gold-400/5 rounded-full blur-[100px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 mb-16 relative z-10">
+      <div className="max-w-7xl mx-auto px-6 mb-16 relative z-10 flex flex-col items-center text-center md:items-start md:text-left">
         <h2 className="text-3xl md:text-5xl font-bold mb-6">
           Premium <span className="text-gold-400">Services</span>
         </h2>
-        <p className="text-gray-400 max-w-2xl text-lg">
+        <p className="text-gray-400 max-w-2xl text-lg mx-auto md:mx-0">
           We don't just post content; we curate experiences. From total digital makeovers to broadcast-quality production, we elevate your brand.
         </p>
       </div>
