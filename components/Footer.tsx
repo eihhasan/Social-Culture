@@ -34,7 +34,7 @@ const Footer: React.FC = () => {
               className="flex items-center gap-4 mb-8 group"
             >
               <div className="w-12 h-12 overflow-hidden rounded-full border border-gold-400/30 bg-black/50 p-1.5 transition-transform group-hover:scale-105">
-                <img src="/logo.png" alt="Logo" className="w-full h-full object-contain" />
+                <img src="/logo.jpg" alt="Logo" className="w-full h-full object-contain" />
               </div>
               <div className="flex flex-col -space-y-1">
                 <span className="text-2xl font-black tracking-tighter text-white uppercase leading-none">SOCIAL</span>

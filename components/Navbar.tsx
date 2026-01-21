@@ -77,48 +77,13 @@ const Navbar: React.FC = () => {
           <a
             href="#contact"
             onClick={(e) => handleScrollTo(e, '#contact')}
-            className="group relative inline-flex items-center justify-center px-8 py-3 font-bold text-white transition-all duration-300 bg-neutral-900 border border-gold-400/50 rounded-full hover:border-gold-400 overflow-hidden"
+            className="group relative inline-flex items-center justify-center px-6 py-2.5 md:px-8 md:py-3 font-bold text-white transition-all duration-300 bg-neutral-900 border border-gold-400/50 rounded-full hover:border-gold-400 overflow-hidden shadow-lg shadow-gold-400/10"
           >
             <span className="absolute inset-0 w-0 h-full transition-all duration-[400ms] ease-out bg-gold-400 group-hover:w-full"></span>
-            <span className="relative text-xs tracking-widest group-hover:text-black uppercase">Get Started</span>
+            <span className="relative text-[10px] md:text-xs tracking-widest group-hover:text-black uppercase">Get Started</span>
           </a>
         </div>
 
-        {/* Mobile Toggle */}
-        <button
-          className="md:hidden flex flex-col items-center justify-center w-10 h-10 rounded-full bg-white/5 border border-white/10 text-white hover:text-gold-400 relative z-50 transition-all active:scale-95"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        >
-          {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
-        </button>
-      </div>
-
-      {/* Mobile Menu */}
-      <div
-        className={`fixed inset-0 bg-black/98 backdrop-blur-3xl z-40 flex flex-col items-center justify-center space-y-10 transition-all duration-700 md:hidden ${isMobileMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-full pointer-events-none'
-          }`}
-      >
-        <div className="flex flex-col items-center gap-8">
-          {navLinks.map((link, idx) => (
-            <a
-              key={link.name}
-              href={link.href}
-              onClick={(e) => handleScrollTo(e, link.href)}
-              className={`text-3xl font-black text-white hover:text-gold-400 tracking-tighter uppercase transition-all duration-500 transform ${isMobileMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
-              style={{ transitionDelay: `${idx * 100}ms` }}
-            >
-              {link.name}
-            </a>
-          ))}
-          <a
-            href="#contact"
-            onClick={(e) => handleScrollTo(e, '#contact')}
-            className={`mt-6 px-10 py-4 bg-gold-400 text-black font-black text-xs tracking-[0.3em] rounded-full uppercase transition-all duration-700 transform ${isMobileMenuOpen ? 'scale-100 opacity-100' : 'scale-50 opacity-0'}`}
-            style={{ transitionDelay: '500ms' }}
-          >
-            Get Started
-          </a>
-        </div>
       </div>
     </nav>
   );

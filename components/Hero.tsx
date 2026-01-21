@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { PointerHighlight } from './ui/pointer';
+import { motion } from "framer-motion";
 
 const Hero: React.FC = () => {
   return (
@@ -56,9 +57,18 @@ const Hero: React.FC = () => {
           <br />
           <span className="relative">
             <PointerHighlight>
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-gold-400 via-yellow-300 to-gold-500 drop-shadow-[0_0_15px_rgba(251,191,36,0.3)] animate-pulse-slow inline-block">
+              <motion.span
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{
+                  duration: 0.8,
+                  delay: 1,          // ⏱ 2 second delay
+                  ease: "easeInOut", // smooth ease
+                }}
+                className="bg-clip-text text-transparent bg-gradient-to-r from-gold-400 via-yellow-300 to-gold-500 drop-shadow-[0_0_15px_rgba(251,191,36,0.3)] inline-block"
+              >
                 SOCIAL CULTURE
-              </span>
+              </motion.span>
             </PointerHighlight>
             <div className="absolute inset-0 bg-gradient-to-r from-gold-400/20 to-transparent blur-xl opacity-30 -z-10"></div>
           </span>

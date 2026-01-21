@@ -1,7 +1,11 @@
-import React from 'react';
-import { Quote, Star, ArrowUpRight } from 'lucide-react';
+import React, { useState, useEffect, useCallback } from 'react';
+import { Quote, Star, ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Testimonials: React.FC = () => {
+  const [activeSlide, setActiveSlide] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
   const testimonials = [
     {
       text: "Social Culture completely transformed our Instagram aesthetics. The video quality is on par with TV commercials, and the engagement skyrocketed beyond our expectations. Truly a game-changer for our brand.",
@@ -61,6 +65,30 @@ const Testimonials: React.FC = () => {
     }
   ];
 
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const nextSlide = useCallback(() => {
+    setActiveSlide((prev) => (prev + 1) % testimonials.length);
+  }, [testimonials.length]);
+
+  const prevSlide = useCallback(() => {
+    setActiveSlide((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  }, [testimonials.length]);
+
+  useEffect(() => {
+    if (isMobile) {
+      const timer = setInterval(nextSlide, 2000);
+      return () => clearInterval(timer);
+    }
+  }, [isMobile, nextSlide]);
+
   return (
     <section id="testimonials" className="py-24 bg-black relative overflow-hidden">
       {/* Background Decor */}
@@ -73,12 +101,75 @@ const Testimonials: React.FC = () => {
             <span className="text-[10px] font-black tracking-widest text-[#FFD700] uppercase">Success Stories</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-black text-white uppercase tracking-tighter">
-            Voice of <span className="text-transparent bg-clip-text bg-gold-400 to-amber-600">The Culture</span>
+            Voice of <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-400 to-yellow-600">The Culture</span>
           </h2>
         </div>
 
-        {/* Dynamic Masonry Grid with Random Heights */}
-        <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6 max-w-5xl mx-auto">
+        {/* Mobile Carousel View */}
+        <div className="lg:hidden relative max-w-2xl mx-auto">
+          <div className="relative overflow-hidden min-h-[350px] flex items-center">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeSlide}
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -50 }}
+                transition={{ duration: 0.5, ease: "easeInOut" }}
+                className="w-full"
+              >
+                <div className="relative p-8 rounded-3xl bg-neutral-900 border border-white/5 shadow-2xl">
+                  <div className="flex justify-between items-center mb-6">
+                    <Quote className="text-gold-400 w-10 h-10 opacity-30" />
+                    <div className="flex gap-1">
+                      {[...Array(testimonials[activeSlide].rating)].map((_, idx) => (
+                        <Star key={idx} className="w-4 h-4 text-gold-400 fill-gold-400" />
+                      ))}
+                    </div>
+                  </div>
+                  <p className="text-white text-lg md:text-xl font-medium leading-relaxed mb-8 italic">
+                    "{testimonials[activeSlide].text}"
+                  </p>
+                  <div className="flex items-center gap-4 border-t border-white/5 pt-6">
+                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-neutral-800 to-black border border-white/10 flex items-center justify-center text-gold-400 font-black text-lg shadow-lg">
+                      {testimonials[activeSlide].author.charAt(0)}
+                    </div>
+                    <div>
+                      <p className="text-white text-sm font-bold leading-none mb-1.5">{testimonials[activeSlide].author}</p>
+                      <p className="text-gold-400/50 text-[10px] font-black uppercase tracking-widest">{testimonials[activeSlide].role}</p>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* Controls */}
+          <div className="flex justify-center items-center gap-6 mt-10">
+            <button
+              onClick={prevSlide}
+              className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white hover:border-gold-400 hover:text-gold-400 transition-all active:scale-90"
+            >
+              <ChevronLeft size={24} />
+            </button>
+            <div className="flex gap-2">
+              {testimonials.map((_, i) => (
+                <div
+                  key={i}
+                  className={`h-1 transition-all duration-300 rounded-full ${activeSlide === i ? 'w-8 bg-gold-400' : 'w-2 bg-white/10'}`}
+                />
+              ))}
+            </div>
+            <button
+              onClick={nextSlide}
+              className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white hover:border-gold-400 hover:text-gold-400 transition-all active:scale-90"
+            >
+              <ChevronRight size={24} />
+            </button>
+          </div>
+        </div>
+
+        {/* Desktop Masonry Grid */}
+        <div className="hidden lg:block columns-3 gap-6 space-y-6 max-w-5xl mx-auto">
           {testimonials.map((t, i) => (
             <div
               key={i}
