@@ -106,13 +106,13 @@ const Footer: React.FC = () => {
                 <div className="w-10 h-10 rounded-xl bg-gold-400/10 flex items-center justify-center text-gold-400 shrink-0 border border-gold-400/20">
                   <Phone size={18} />
                 </div>
-                <span className="text-gray-400 text-sm font-medium hover:text-gold-400 transition-colors cursor-pointer">+91 98765 43210</span>
+                <span className="text-gray-400 text-sm font-medium hover:text-gold-400 transition-colors cursor-pointer">+91 9411251471</span>
               </li>
               <li className="flex items-center gap-5">
                 <div className="w-10 h-10 rounded-xl bg-gold-400/10 flex items-center justify-center text-gold-400 shrink-0 border border-gold-400/20">
                   <Mail size={18} />
                 </div>
-                <span className="text-gray-400 text-sm font-medium hover:text-gold-400 transition-colors cursor-pointer">hello@socialculture.com</span>
+                <span className="text-gray-400 text-sm font-medium hover:text-gold-400 transition-colors cursor-pointer">culturesocial4@gmail.com</span>
               </li>
             </ul>
           </div>
