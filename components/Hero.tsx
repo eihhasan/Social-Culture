@@ -65,7 +65,7 @@ const Hero: React.FC = () => {
                   delay: 1,          // ⏱ 2 second delay
                   ease: "easeInOut", // smooth ease
                 }}
-                className="bg-clip-text text-transparent bg-gradient-to-r from-gold-400 via-yellow-300 to-gold-500 drop-shadow-[0_0_15px_rgba(251,191,36,0.3)] inline-block"
+                className="bg-clip-text text-transparent bg-gradient-to-r from-gold-400 via-yellow-300 to-gold-500 drop-shadow-[0_0_15px_rgba(251,191,36,0.3)] inline-block px-2"
               >
                 SOCIAL CULTURE
               </motion.span>

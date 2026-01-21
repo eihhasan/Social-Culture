@@ -1,5 +1,6 @@
 import React from 'react';
-import { Facebook, Twitter, Instagram, Linkedin, Youtube, Mail, Phone, MapPin } from 'lucide-react';
+import { Linkedin, Youtube as YoutubeIcon, Mail, Phone, MapPin } from 'lucide-react';
+import { Facebook, Twitter, Instagram, Youtube } from './ui/BrandIcons';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();

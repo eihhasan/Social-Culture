@@ -11,10 +11,6 @@ import ProcessData from './components/ui/process-data';
 import ThreeDMarqueeDemo from './components/marque';
 import { motion } from 'framer-motion';
 import {
-  Instagram,
-  Facebook,
-  Youtube,
-  Twitter,
   Camera,
   Video,
   Mic,
@@ -32,6 +28,7 @@ import {
   Palette,
   BarChart
 } from 'lucide-react'; // Digital Marketing Icons
+import { Instagram, Facebook, Youtube, Twitter } from './components/ui/BrandIcons';
 
 const FloatingSocialIcons = () => {
   const symbols = [

@@ -1,5 +1,6 @@
 import React from 'react';
-import { Instagram, Heart, MessageCircle, ExternalLink } from 'lucide-react';
+import { Heart, MessageCircle, ExternalLink } from 'lucide-react';
+import { Instagram } from './ui/BrandIcons';
 
 const InstagramFeed: React.FC = () => {
   // Placeholder data to mimic Social Culture's feed vibe

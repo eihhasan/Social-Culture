@@ -1,7 +1,6 @@
 import React from 'react';
 import { BentoGrid, BentoGridItem } from './ui/Card';
 import {
-  Instagram,
   Video,
   Mic,
   Camera,
@@ -9,6 +8,7 @@ import {
   Palette,
   MonitorPlay
 } from 'lucide-react';
+import { Instagram } from './ui/BrandIcons';
 
 const Skeleton = ({ img }: { img: string }) => (
   // Increased height from min-h-[6rem] to h-64 (16rem) for bigger images
