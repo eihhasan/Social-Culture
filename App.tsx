@@ -9,10 +9,92 @@ import Footer from './components/Footer';
 import Testimonials from './components/Testimonials';
 import ProcessData from './components/ui/process-data';
 import ThreeDMarqueeDemo from './components/marque';
+import { motion } from 'framer-motion';
+import {
+  Instagram,
+  Camera,
+  ShoppingCart,
+  Tag,
+  BarChart,
+  Users,
+  TrendingUp,
+  ShoppingBag,
+  Heart,
+  Share2,
+  MessageCircle,
+  Star,
+  Filter,
+  Edit,
+  Globe,
+  CreditCard,
+  Package,
+  Target,
+  ThumbsUp
+} from 'lucide-react'; // Updated icon imports
+
+const FloatingSocialIcons = () => {
+  const symbols = [
+    { icon: Instagram, delay: 0, size: "text-4xl", position: { top: "10%", left: "10%" } },
+    { icon: Camera, delay: 0.5, size: "text-3xl", position: { top: "20%", right: "15%" } },
+    { icon: ShoppingCart, delay: 1, size: "text-5xl", position: { top: "60%", left: "5%" } },
+    { icon: Tag, delay: 1.5, size: "text-3xl", position: { top: "40%", right: "10%" } },
+    { icon: ShoppingBag, delay: 2, size: "text-4xl", position: { top: "80%", left: "20%" } },
+    { icon: BarChart, delay: 2.5, size: "text-6xl", position: { top: "30%", left: "80%" } },
+    { icon: Users, delay: 3, size: "text-5xl", position: { top: "70%", right: "25%" } },
+    { icon: Heart, delay: 3.5, size: "text-3xl", position: { top: "15%", left: "60%" } },
+    { icon: Share2, delay: 4, size: "text-4xl", position: { top: "85%", right: "5%" } },
+    { icon: TrendingUp, delay: 4.5, size: "text-5xl", position: { top: "50%", left: "40%" } },
+    { icon: MessageCircle, delay: 5, size: "text-2xl", position: { top: "25%", left: "30%" } },
+    { icon: Star, delay: 5.5, size: "text-6xl", position: { top: "45%", right: "30%" } },
+    { icon: Filter, delay: 6, size: "text-3xl", position: { top: "35%", left: "70%" } },
+    { icon: Edit, delay: 6.5, size: "text-4xl", position: { top: "75%", right: "40%" } },
+    { icon: Globe, delay: 7, size: "text-2xl", position: { top: "55%", left: "15%" } },
+    { icon: CreditCard, delay: 7.5, size: "text-7xl", position: { top: "90%", left: "50%" } },
+    { icon: Package, delay: 8, size: "text-3xl", position: { top: "5%", right: "35%" } },
+    { icon: Target, delay: 8.5, size: "text-4xl", position: { top: "65%", left: "85%" } },
+    { icon: ThumbsUp, delay: 9, size: "text-4xl", position: { top: "25%", right: "60%" } },
+    { icon: ShoppingCart, delay: 9.5, size: "text-3xl", position: { top: "45%", left: "90%" } },
+  ]
+
+  return (
+    <div className="fixed inset-0 overflow-hidden pointer-events-none z-[1]">
+      {symbols.map((Symbol, index) => (
+        <motion.div
+          key={index}
+          className={`absolute ${Symbol.size}`}
+          style={{
+            ...Symbol.position,
+            color: "rgba(255, 215, 0, 0.6)",
+            filter: "drop-shadow(0 0 12px rgba(255, 215, 0, 0.8)) drop-shadow(0 0 24px rgba(255, 215, 0, 0.4))",
+          }}
+          initial={{ opacity: 0, y: 100, rotate: 0, scale: 0.5 }}
+          animate={{
+            opacity: [0, 0.8, 0.4, 0.9, 0.3, 0.7],
+            y: [-100, -200, -300, -400, -500, -600],
+            x: [0, Math.random() * 120 - 60, Math.random() * 180 - 90, Math.random() * 100 - 50],
+            rotate: [0, 180, 360, 540, 720, 900],
+            scale: [0.5, 1.2, 0.8, 1.5, 0.6, 1],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Number.POSITIVE_INFINITY,
+            delay: Symbol.delay,
+            ease: "easeInOut",
+          }}
+        >
+          <Symbol.icon />
+        </motion.div>
+      ))}
+    </div>
+  )
+}
 
 const App: React.FC = () => {
   return (
-    <div className="min-h-screen bg-black text-white selection:bg-gold-400 selection:text-black overflow-x-hidden font-sans">
+    <div className="min-h-screen bg-black text-white selection:bg-gold-400 selection:text-black overflow-x-hidden font-sans relative">
+      {/* Add the FloatingSocialIcons here */}
+      <FloatingSocialIcons />
+
       <Navbar />
       <main>
         <Hero />
@@ -21,9 +103,9 @@ const App: React.FC = () => {
         <div className="section-divider bg-gradient-to-r from-black via-gold-600/20 to-black h-px w-full" />
         <ProcessData />
         <div className="bg-black">
-          <ThreeDMarqueeDemo /></div>
+          <ThreeDMarqueeDemo />
+        </div>
         <Testimonials />
-
         <Contact />
       </main>
       <Footer />
